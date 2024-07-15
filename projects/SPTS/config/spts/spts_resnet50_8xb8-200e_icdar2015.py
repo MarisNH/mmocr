@@ -4,7 +4,8 @@ _base_ = [
     '../_base_/default_runtime.py',
 ]
 
-load_from = 'work_dirs/spts_resnet50_150e_pretrain-spts/epoch_150.pth'
+# load_from = 'work_dirs/spts_resnet50_150e_pretrain-spts/epoch_150.pth'
+load_from = 'work_dirs/spts_resnet50_150e_pretrain-spts-c9fe4c78.pth'
 
 num_epochs = 200
 lr = 0.00001
@@ -36,8 +37,8 @@ icdar2015_textspotting_test = _base_.icdar2015_textspotting_test
 icdar2015_textspotting_test.pipeline = _base_.test_pipeline
 
 train_dataloader = dict(
-    batch_size=8,
-    num_workers=8,
+    batch_size=4,
+    num_workers=4,
     pin_memory=True,
     persistent_workers=True,
     sampler=dict(type='BatchAugSampler', shuffle=True, num_repeats=2),
