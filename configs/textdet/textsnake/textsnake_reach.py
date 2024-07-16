@@ -5,9 +5,16 @@ _base_ = [
     '../_base_/schedules/schedule_sgd_1200e.py',
 ]
 
-#load_from = 'pths/textsnake_resnet50_fpn-unet_1200e_ctw1500_20220825_221459-c0b6adc4.pth'
-train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=150, val_interval=10)
-default_hooks = dict(checkpoint=dict(type='CheckpointHook', interval=25, by_epoch=True))
+load_from = 'pths/textsnake_resnet50_fpn-unet_1200e_ctw1500_20220825_221459-c0b6adc4.pth'
+train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=100, val_interval=10)
+default_hooks = dict(checkpoint=dict(
+                        type='CheckpointHook',
+                        interval=20,
+                        save_last=True,
+                        save_best=['icdar/recall', 'icdar/precision', 'icdar/hmean'],
+                        rule='greater',
+                        _delete_=True),)
+# default_hooks = dict(checkpoint=dict(type='CheckpointHook', interval=20, by_epoch=True))
 
 # dataset settings
 igd_reach_textdet_train = _base_.igd_reach_textdet_train

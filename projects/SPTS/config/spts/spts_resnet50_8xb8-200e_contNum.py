@@ -1,6 +1,6 @@
 _base_ = [
     '_base_spts_resnet50_mmocr.py',
-    '../_base_/datasets/igd_uav.py',
+    '../_base_/datasets/contNum.py',
     '../_base_/default_runtime.py',
 ]
 
@@ -30,10 +30,10 @@ val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 
 # dataset settings
-igd_uav_textspotting_train = _base_.igd_uav_textspotting_train
-igd_uav_textspotting_train.pipeline = _base_.train_pipeline
-igd_uav_textspotting_test = _base_.igd_uav_textspotting_test
-igd_uav_textspotting_test.pipeline = _base_.test_pipeline
+contNum_textspotting_train = _base_.contNum_textspotting_train
+contNum_textspotting_train.pipeline = _base_.train_pipeline
+contNum_textspotting_test = _base_.contNum_textspotting_test
+contNum_textspotting_test.pipeline = _base_.test_pipeline
 
 train_dataloader = dict(
     batch_size=3,
@@ -41,7 +41,7 @@ train_dataloader = dict(
     persistent_workers=True,
     pin_memory=True,
     sampler=dict(type='BatchAugSampler', shuffle=True, num_repeats=1), #was 2
-    dataset=igd_uav_textspotting_train)
+    dataset=contNum_textspotting_train)
 
 val_dataloader = dict(
     batch_size=1,
@@ -49,7 +49,7 @@ val_dataloader = dict(
     persistent_workers=True,
     pin_memory=True,
     sampler=dict(type='DefaultSampler', shuffle=False),
-    dataset=igd_uav_textspotting_test)
+    dataset=contNum_textspotting_test)
 
 test_dataloader = val_dataloader
 

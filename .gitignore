@@ -108,7 +108,6 @@ venv.bak/
 
 # cython generated cpp
 !data/dict
-/data
 .vscode
 .idea
 
@@ -143,4 +142,3 @@ mmocr/.mim
 workdirs/
 .history/
 .dev/
-data/

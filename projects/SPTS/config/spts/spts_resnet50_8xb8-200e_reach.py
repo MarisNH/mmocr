@@ -12,10 +12,10 @@ lr = 0.00001
 default_hooks = dict(
     checkpoint=dict(
         type='CheckpointHook',
+        interval=10,
         save_best='none/hmean',
         rule='greater',
-        _delete_=True),
-    logger=dict(type='LoggerHook', interval=5))
+        _delete_=True))
 
 optim_wrapper = dict(
     type='OptimWrapper',
