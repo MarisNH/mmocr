@@ -142,4 +142,4 @@ mmocr/.mim
 workdirs/
 .history/
 .dev/
-work_dirs
+work_dirs/*
