@@ -1,6 +1,6 @@
 _base_ = [
     '_base_spts_resnet50_mmocr.py',
-    '../_base_/datasets/igd_reach.py',
+    '../_base_/datasets/igd_ground.py',
     '../_base_/default_runtime.py',
 ]
 
@@ -30,10 +30,10 @@ val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 
 # dataset settings
-igd_reach_textspotting_train = _base_.igd_reach_textspotting_train
-igd_reach_textspotting_train.pipeline = _base_.train_pipeline
-igd_reach_textspotting_test = _base_.igd_reach_textspotting_test
-igd_reach_textspotting_test.pipeline = _base_.test_pipeline
+igd_ground_textspotting_train = _base_.igd_ground_textspotting_train
+igd_ground_textspotting_train.pipeline = _base_.train_pipeline
+igd_ground_textspotting_test = _base_.igd_ground_textspotting_test
+igd_ground_textspotting_test.pipeline = _base_.test_pipeline
 
 train_dataloader = dict(
     batch_size=3,
@@ -41,7 +41,7 @@ train_dataloader = dict(
     persistent_workers=True,
     pin_memory=True,
     sampler=dict(type='BatchAugSampler', shuffle=True, num_repeats=1), #was 2
-    dataset=igd_reach_textspotting_train)
+    dataset=igd_ground_textspotting_train)
 
 val_dataloader = dict(
     batch_size=1,
@@ -49,7 +49,7 @@ val_dataloader = dict(
     persistent_workers=True,
     pin_memory=True,
     sampler=dict(type='DefaultSampler', shuffle=False),
-    dataset=igd_reach_textspotting_test)
+    dataset=igd_ground_textspotting_test)
 
 test_dataloader = val_dataloader
 

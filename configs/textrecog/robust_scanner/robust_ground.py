@@ -1,5 +1,5 @@
 _base_ = [
-    "../_base_/datasets/igd_reach.py",
+    "../_base_/datasets/igd_ground.py",
     "../_base_/default_runtime.py",
     "../_base_/schedules/schedule_adam_step_5e.py",
     "_base_robustscanner_resnet31.py",
@@ -9,8 +9,8 @@ load_from = 'pths/robustscanner_resnet31_5e_st-sub_mj-sub_sa_real_20220915_15244
 train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=100, val_interval=10)
 
 # dataset settings
-train_list = [_base_.igd_reach_textrecog_train]
-test_list = [_base_.igd_reach_textrecog_test]
+train_list = [_base_.igd_ground_textrecog_train]
+test_list = [_base_.igd_ground_textrecog_test]
 
 default_hooks = dict(checkpoint=dict(
                         type='CheckpointHook',
